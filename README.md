@@ -2,6 +2,11 @@
 
 Complete GLFW bindings written in Crystal.
 
+LibGLFW offers bindings for the [full GLFW specification](http://www.glfw.org/docs/latest/glfw3_8h.html).
+
+This is a work in progress - documentation coming soon!
+
+
 ## Installation
 
 Add this to your application's `shard.yml`:
