@@ -82,7 +82,7 @@ lib LibGLFW
   #
   # This method accepts the following arguments:
   # - *count*, where it stores the number of monitors in the returned array.
-  *
+  #
   # *count* is set to zero if an error occurs.
   #
   # Returns an array of monitor handles, or *nil* if no monitors were found or if an error occurred.
@@ -154,13 +154,38 @@ lib LibGLFW
   fun set_monitor_callback = glfwSetMonitorCallback(cbfun : Monitorfun) : Monitorfun
 
   # Returns the available video modes for the specified monitor.
+  # 
+  # This method returns an array of all video modes supported by the monitor. The returned array is sorted in
+  # ascending order, first by color bit depth (the sum of all channel depths) and then by resolution area (the
+  # product of width and height).
+  #
+  # This method accepts the following arguments:
+  # - *monitor*, the monitor to query.
+  # - *count*, where to store the number of video modes in the returned array. This is set to zero if an error occurs.
+  #
+  # Returns an array of video modes, or *nil* if an error occurs.
   fun get_video_modes = glfwGetVideoModes(monitor : Pointer(Monitor),
                                           count   : Pointer(Int32)) : Pointer(Vidmode)
 
   # Returns the current mode of the specified monitor.
+  #
+  # This method returns the current video mode of the specified monitor. If a full screen window has been created for 
+  # that monitor, the return value will depend on whether that window is iconified.
+  #
+  # This method accepts the following arguments:
+  # - *monitor*, the monitor to query.
+  #
+  # Returns the current mode of the monitor, or *nil* if an error occurs.
   fun get_video_mode = glfwGetVideoMode(monitor : Pointer(Monitor)) : Pointer(Vidmode)
 
   # Generates a gamma ramp and sets it for the specified monitor.
+  #
+  # This method generates a 256-element gamma ramp from the specified exponent and then calls `#set_gamma_ramp` with it.
+  # The value must be a finite number greater than zero.
+  #
+  # This method accepts the following arguments:
+  # - *monitor*, the monitor whose gamma ramp to set.
+  # - *gamma*, the desired exponent.
   fun set_gamma = glfwSetGamma(monitor  : Pointer(Monitor),
                                gamma    : Float32) : Void
 

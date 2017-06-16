@@ -11,7 +11,7 @@ bindings are relatively "raw" - with a few notable exceptions, names of function
 First, make sure you've got GLFW3:
 
 ```sh
-$ brew install glfw3
+brew install glfw3
 ```
 
 Add this to your application's `shard.yml`:
