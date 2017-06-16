@@ -6,43 +6,151 @@ module LibGLFW
 lib LibGLFW
 
   # Initializes the GLFW library.
+  #
+  # Before most GLFW functions can be used, GLFW must be initialized, and before an application
+  # terminates, GLFW should be terminated in order to free any resources allocated during or after
+  # initialization.
+  #
+  # If this method fails, it calls `#terminate` before returning. If this method succeeds, `#terminate` 
+  #  should be called manually before the application exits.
+  #
+  # Additional calls to this method after successful initialization but before termination will immediately
+  # return `GLFW_TRUE`. 
+  #
+  # Returns `GLFW_TRUE` if initialization is successful and returns `GLFW_FALSE` otherwise.
   fun init = glfwInit : Int32
 
-  #  Terminates the GLFW Library.
+  # Terminates the GLFW Library.
+  #
+  # This method destroys all remaining windows and cursors, restores any modified gamma ramps and frees
+  # any other allocated resources.  Once it is called, initialization via `#init` will be necessary to
+  # begin using most GLFW functions again.
+  #
+  # If GLFW has been successfully initialized, this method should be called before the application exits.
+  # If initialization fails, there is no need to call this method, because `#init` calls it implicity upon 
+  # failure.
   fun terminate = glfwTerminate : Void
 
   # Retrieves the version of the GLFW library.
+  #
+  # This method retrieves the major, minor, and revision numbers of the GLFW library.
+  #
+  # It accepts the following arguments:
+  # *major*, where to store the major version number.
+  # *minor*, where to store the minor version number.
+  # *rev*, where to store the revision version number.
   fun get_version = glfwGetVersion(major  : Pointer(Int32),
                                    minor  : Pointer(Int32),
                                    rev    : Pointer(Int32)) : Void
 
   # Returns the compile-time generated version string of the GLFW library binary.
+  # 
+  # This method describes the version, platform, compiler, and any platform-specific compile-time
+  # options. The format of the string is as follows:
+  # 
+  # - The version of GLFW
+  # - The name of the window system API
+  # - The name of the context creation api
+  # - Any additional options or APIs
+  #
+  # **The version string should not be used to parse the GLFW library version.** `#get_version` provides the 
+  # version of the running library binary in numerical format.
   fun get_version_string = glfwGetVersionString : Pointer(UInt8)
 
   # Sets the error callback, which is called with an error code and a human-readable description each time a GLFW
   # error occurs.
+  #
+  # The error callback is called on the thread where the error occurred. If GLFW is being used from multiple
+  # threads, then the error callback needs to be written accordingly.
+  #
+  # Because the description string may have been generated specifically for that error, it is not guaranteed
+  # to be valid after the callback has returned.  A copy of the description string must be made if it is to
+  # be used after the callback returns.
+  #
+  # Once set, the error callback remains set even after the library has been terminated.
+  #
+  # This method accepts the following arguments:
+  # - *cbfun*, the new callback. If nil, the current callback is removed.
+  #
+  # Returns the previously set callback or *nil* if no callback was set.
   fun set_error_callback = glfwSetErrorCallback(cbfun : Errorfun) : Errorfun
 
-  # Returns the currently connected monitors.
+  # Retrieves the currently connected monitors.
+  #
+  # This method retrieves an array of handles for all currently connected monitors. The primary monitor
+  # is always first in the returned array. If no monitors are found, *nil* is returned.
+  #
+  # This method accepts the following arguments:
+  # - *count*, where it stores the number of monitors in the returned array.
+  *
+  # *count* is set to zero if an error occurs.
+  #
+  # Returns an array of monitor handles, or *nil* if no monitors were found or if an error occurred.
   fun get_monitors = glfwGetMonitors(count : Pointer(Int32)) : Pointer(Pointer(Monitor))
 
   # Returns the primary monitor.
+  #
+  # This method returns the primary monitor. This is usually the monitor where elements like the task bar or
+  # global menu bar are located.
+  #
+  # Returns the primary monitor handle or *nil* if no monitors were found or if an error occurred.
   fun get_primary_monitor = glfwGetPrimaryMonitor : Pointer(Monitor)
 
-  # Returns the position of the monitor's viewport on the virtual screen.
+  # Retrieves the position of the monitor's viewport on the virtual screen.
+  #
+  # This method retrieves the position, in screen coordinates, of the upper-left corner of the specified
+  # monitor.
+  #
+  # Any or all of the position arguments may be *nil*. If an error occurs, all non-*nil* position arguments
+  # will be set to zero.
+  #
+  # This method accepts the following arguments:
+  # - *monitor*, the monitor to query.
+  # - *xpos*, where to store the monitor x-coordinate, or nil.
+  # - *ypos*, where to store the monitor y-coordinate, or nil.
   fun get_monitor_pos = glfwGetMonitorPos(monitor : Pointer(Monitor), 
                                           xpos    : Pointer(Int32),
                                           ypos    : Pointer(Int32)) : Void
 
   # Returns the physical size of the monitor.
+  # 
+  # This method returns the size, in millimeters, of the display area of the specified monitor.
+  #
+  # Some systems do not provide accurate monitor size information, either because the monitor EDID data is
+  # incorrect or because the driver does not report it accurately.
+  #
+  # Any or all of the size arguments may be *nil*. If an error occurs, all non-*nil* size arguments will be
+  # set to zero.
+  #
+  # This method accepts the following arguments:
+  # - *monitor*, the monitor to query.
+  # - *widthMM*, where to store the width, in millimeters, of the monitor's display area, or *nil*.
+  # - *heightMM*, where to store the height, in millimeters, of the monitor's display area, or *nil*.
   fun get_monitor_physical_size = glfwGetMonitorPhysicalSize(monitor  : Pointer(Monitor),
                                                              widthMM  : Pointer(Int32),
                                                              heightMM : Pointer(Int32)) : Void
 
   # Returns the name of the specified monitor.
+  #
+  # This method returns a human-readable name of the specified monitor. The name typically reflects the make
+  # and model of the monitor and is not guaranteed to be unique among the connected monitors.
+  #
+  # This method accepts the following arguments:
+  # - *monitor*, the monitor to query.
+  #
+  # Returns the name of the monitor, or *nil* if an error occurs.
   fun get_monitor_name = glfwGetMonitorName(monitor : Pointer(Monitor)) : Pointer(UInt8)
 
   # Sets the monitor configuration callback.
+  #
+  # This method sets the monitor configuration callback, or removes the currently set callback. This is called
+  # when a monitor is connected to or disconnected from the system.
+  #
+  # This method accepts the following arguments:
+  # - *cbfun*, the new callback, or *nil* to remove the currently set callback.
+  #
+  # Returns the previously set callback, or *nil* if no callback is set or the library has not been
+  # initialized.
   fun set_monitor_callback = glfwSetMonitorCallback(cbfun : Monitorfun) : Monitorfun
 
   # Returns the available video modes for the specified monitor.

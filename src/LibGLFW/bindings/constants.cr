@@ -3,6 +3,12 @@ module LibGLFW
 @[Link("glfw3")]
 lib LibGLFW
 
+  #-- Booleans --#
+
+    GLFW_TRUE   = 1
+    GLFW_FALSE  = 0
+
+
   #-- Keys --#
 
     KEY_UNKNOWN       = -1
