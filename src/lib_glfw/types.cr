@@ -1,6 +1,3 @@
-module LibGLFW
-
-@[Link("glfw3")]
 lib LibGLFW
 
   #-- Structs --#
@@ -127,7 +124,5 @@ lib LibGLFW
 
     # The function signature for joystick configuration callbacks.
     type Joystickfun        = (Int32, Int32 -> Void)
-
-end
 
 end

@@ -1,7 +1,5 @@
 require "./types"
 
-module LibGLFW
-
 @[Link("glfw3")]
 lib LibGLFW
 
@@ -491,7 +489,5 @@ lib LibGLFW
 
   # Returns the Vulkan instance extensions required by GLFW.
   fun get_required_instance_extensions = glfwGetRequiredInstanceExtensions(count : Pointer(UInt32)) : Pointer(Pointer(UInt8))
-
-end
 
 end

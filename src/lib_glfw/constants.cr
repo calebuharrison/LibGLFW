@@ -1,6 +1,3 @@
-module LibGLFW
-
-@[Link("glfw3")]
 lib LibGLFW
 
   #-- Booleans --#
@@ -311,7 +308,5 @@ lib LibGLFW
     # The key was held down until it repeated.
     REPEAT  = 2
 
-
-end
 
 end
