@@ -18,7 +18,7 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 dependencies:
-  LibGLFW:
+  lib_glfw:
     github: calebuharrison/LibGLFW
     branch: master
 ```
@@ -32,45 +32,23 @@ shards install
 ## Usage
 
 ```crystal
-require "LibGLFW"
+require "lib_glfw"
 
 # Initialize GLFW
-LibGLFW::LibGLFW.init
+LibGLFW.init
 
 width, height, title, monitor, share = 640, 480, "My First Window!", nil, nil
 
 # Create a window and its associated OpenGL context.
-window_handle = LibGLFW::LibGLFW.create_window(width, height, title, monitor, share)
+window_handle = LibGLFW.create_window(width, height, title, monitor, share)
 
 # Render new frames until the window should close.
-until LibGLFW::LibGLFW.window_should_close(window_handle)
-  LibGLFW::LibGLFW.swap_buffers(window_handle)
+until LibGLFW.window_should_close(window_handle)
+  LibGLFW.swap_buffers(window_handle)
 end
 
 # Destroy the window along with its context.
-LibGLFW::LibGLFW.destroy_window(window_handle)
-
-# Terminate GLFW
-LibGLFW::LibGLFW.terminate
-```
-
-The lib that constitutes LibGLFW is itself wrapped in a module that is also called LibGLFW. To avoid writing 
-the namespace over and over again, include the module in your file::
-
-```crystal
-require "LibGLFW"
-
-# Include the LibGLFW module
-include LibGLFW
-```
-
-Now you can drop the redundant namespacing:
-
-```crystal
-# Initialize GLFW
-LibGLFW.init
-
-# Do something awesome here.
+LibGLFW.destroy_window(window_handle)
 
 # Terminate GLFW
 LibGLFW.terminate
