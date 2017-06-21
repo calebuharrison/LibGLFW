@@ -72,57 +72,57 @@ lib LibGLFW
     type Cursor             = Void
 
     # The function signature for error callbacks.
-    type Errorfun           = (Int32, Pointer(UInt8) -> Void)
+    alias Errorfun           = (Int32, Pointer(UInt8) -> Void)
 
     # The function signature for window position callbacks.
-    type Windowposfun       = (Pointer(Window), Int32, Int32 -> Void)
+    alias Windowposfun       = (Pointer(Window), Int32, Int32 -> Void)
 
     # The function signature for window resize callbacks.
-    type Windowsizefun      = (Pointer(Window), Int32, Int32 -> Void)
+    alias Windowsizefun      = (Pointer(Window), Int32, Int32 -> Void)
 
     # The function signature for window close callbacks.
-    type Windowclosefun     = (Pointer(Window) -> Void)
+    alias Windowclosefun     = (Pointer(Window) -> Void)
 
     # The function signature for window content refresh callbacks.
-    type Windowrefreshfun   = (Pointer(Window) -> Void)
+    alias Windowrefreshfun   = (Pointer(Window) -> Void)
 
     # The function signature for window focus/defocus callbacks.
-    type Windowfocusfun     = (Pointer(Window), Int32 -> Void)
+    alias Windowfocusfun     = (Pointer(Window), Int32 -> Void)
 
     # The function signature for window iconify/restore callbacks.
-    type Windowiconifyfun   = (Pointer(Window), Int32 -> Void)
+    alias Windowiconifyfun   = (Pointer(Window), Int32 -> Void)
 
     # The function signature for framebuffer resize callbacks.
-    type Framebuffersizefun = (Pointer(Window), Int32, Int32 -> Void)
+    alias Framebuffersizefun = (Pointer(Window), Int32, Int32 -> Void)
 
     # The function signature for mouse button callbacks.
-    type Mousebuttonfun     = (Pointer(Window), Int32, Int32, Int32 -> Void)
+    alias Mousebuttonfun     = (Pointer(Window), Int32, Int32, Int32 -> Void)
 
     # The function signature for cursor position callbacks.
-    type Cursorposfun       = (Pointer(Window), Float64, Float64 -> Void)
+    alias Cursorposfun       = (Pointer(Window), Float64, Float64 -> Void)
 
     # The function signature for cursor enter/leave callbacks.
-    type Cursorenterfun     = (Pointer(Window), Int32 -> Void)
+    alias Cursorenterfun     = (Pointer(Window), Int32 -> Void)
 
     # The function signature for scroll callbacks.
-    type Scrollfun          = (Pointer(Window), Float64, Float64 -> Void)
+    alias Scrollfun          = (Pointer(Window), Float64, Float64 -> Void)
 
     # The function signature for keyboard key calbacks.
-    type Keyfun             = (Pointer(Window), Int32, Int32, Int32, Int32 -> Void)
+    alias Keyfun             = (Pointer(Window), Int32, Int32, Int32, Int32 -> Void)
 
     # The function signature for Unicode character callbacks.
-    type Charfun            = (Pointer(Window), UInt32 -> Void)
+    alias Charfun            = (Pointer(Window), UInt32 -> Void)
 
     # The function signature for Unicode character with modifiers callbacks.
-    type Charmodsfun        = (Pointer(Window), UInt32, Int32 -> Void)
+    alias Charmodsfun        = (Pointer(Window), UInt32, Int32 -> Void)
 
     # The function signature for file drop callbacks.
-    type Dropfun            = (Pointer(Window), Int32, Pointer(Pointer(UInt8)) -> Void)
+    alias Dropfun            = (Pointer(Window), Int32, Pointer(Pointer(UInt8)) -> Void)
 
     # The function signature for monitor configuration callbacks.
-    type Monitorfun         = (Pointer(Monitor), Int32 -> Void)
+    alias Monitorfun         = (Pointer(Monitor), Int32 -> Void)
 
     # The function signature for joystick configuration callbacks.
-    type Joystickfun        = (Int32, Int32 -> Void)
+    alias Joystickfun        = (Int32, Int32 -> Void)
 
 end
