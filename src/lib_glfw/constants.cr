@@ -308,5 +308,4 @@ lib LibGLFW
     # The key was held down until it repeated.
     REPEAT  = 2
 
-
 end

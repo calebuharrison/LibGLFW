@@ -57,19 +57,34 @@ lib LibGLFW
   #-- Type Declarations --#
 
     # Client API function pointer type
-    type Glproc             = (Void -> Void)
+    type GlProc                 = (Void -> Void)
 
     # Vulkan API function pointer type.
-    type Vkproc             = (Void -> Void)
+    type VkProc                 = (Void -> Void)
 
     # Opaque monitor object.
-    type Monitor            = Void
+    type Monitor                = Void
 
     # Opaque window object.
-    type Window             = Void
+    type Window                 = Void
 
     # Opaque cursor object.
-    type Cursor             = Void
+    type Cursor                 = Void
+
+    # Opaque VkInstance object.
+    type VkInstance             = Void
+
+    # Opaque VkPhysicalDevice object.
+    type VkPhysicalDevice       = Void
+
+    # Opaque VkAllocationCallbacks object.
+    type VkAllocationCallbacks  = Void
+
+    # Opaque VkSurfaceKHR object.
+    type VkSurfaceKHR           = Void
+
+    # Opaque VkResult object.
+    type VkResult               = Void
 
     # The function signature for error callbacks.
     alias Errorfun           = (Int32, Pointer(UInt8) -> Void)
