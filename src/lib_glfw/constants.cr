@@ -2,8 +2,8 @@ lib LibGLFW
 
   #-- Booleans --#
 
-    GLFW_TRUE   = 1
-    GLFW_FALSE  = 0
+    TRUE   = 1
+    FALSE  = 0
 
 
   #-- Keys --#
@@ -129,7 +129,7 @@ lib LibGLFW
     KEY_RIGHT_ALT     = 346
     KEY_RIGHT_SUPER   = 347
     KEY_MENU          = 348
-    KEY_LAST          = KEY_MENU
+    KEY_LAST          = 348
 
 
   #-- Modifier Bits --#
@@ -157,10 +157,10 @@ lib LibGLFW
     MOUSE_BUTTON_6      = 5
     MOUSE_BUTTON_7      = 6
     MOUSE_BUTTON_8      = 7
-    MOUSE_BUTTON_LAST   = MOUSE_BUTTON_8
-    MOUSE_BUTTON_LEFT   = MOUSE_BUTTON_1
-    MOUSE_BUTTON_RIGHT  = MOUSE_BUTTON_2
-    MOUSE_BUTTON_MIDDLE = MOUSE_BUTTON_3
+    MOUSE_BUTTON_LAST   = 7
+    MOUSE_BUTTON_LEFT   = 0
+    MOUSE_BUTTON_RIGHT  = 1
+    MOUSE_BUTTON_MIDDLE = 2
 
 
   #-- Joystick --#
@@ -181,7 +181,7 @@ lib LibGLFW
     JOYSTICK_14   = 13
     JOYSTICK_15   = 14
     JOYSTICK_16   = 15
-    JOYSTICK_LAST = JOYSTICK_16
+    JOYSTICK_LAST = 15
 
 
   #-- Errors --#

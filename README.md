@@ -97,18 +97,6 @@ In Crystal:
 puts "Noooooooooooo!!!!!!" unless LibGLFW.joystick_present(LibGLFW::JOYSTICK_9)
 ```
 
-The only exception to this rule is the boolean constants, which maintain their GLFW prefix:
-
-```crystal
-# Nope!
-LibGLFW::TRUE
-LibGLFW::FALSE
-
-# Yep!
-LibGLFW::GLFW_TRUE
-LibGLFW::GLFW_FALSE
-```
-
 ## Contributing
 
 1. Fork it ( https://github.com/calebuharrison/LibGLFW/fork )
